@@ -1,9 +1,16 @@
 import { signOut } from "aws-amplify/auth";
+import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 export default function Sidebar({ isOpen, onClose }) {
   const navigate = useNavigate();
   const { setUser } = useAuth();
+
+  useEffect(() => {
+    if (isOpen) {
+      onClose();
+    }
+  }, [location.pathname]);
   if (!isOpen) return null;
   const handleLogout = async () => {
     await signOut({ global: true });
@@ -13,8 +20,8 @@ export default function Sidebar({ isOpen, onClose }) {
   return (
     <div
       className={`
-        fixed top-20 bottom-0 left-0 w-[200px] bg-gray-80 z-50
-         rounded-r-lg shadow-lg shadow-indigo-500/30
+        fixed top-[65px] bottom-0 left-0 w-[200px] bg-gray-100 z-50
+          shadow-lg shadow-indigo-500/30
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0 " : "-translate-x-full "}
       `}
@@ -37,10 +44,10 @@ export default function Sidebar({ isOpen, onClose }) {
         <ul>
           {/* <li>
             <NavLink to="/">Home</NavLink>
-          </li>
+          </li>*/}
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
-          </li> */}
+          </li>
           <li>
             <NavLink to="/beneficiary">Beneficiaries</NavLink>
           </li>

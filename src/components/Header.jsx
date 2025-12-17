@@ -28,7 +28,7 @@ export default function Header({ onMenuClick }) {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <div className="flex items-center justify-start gap-3 cursor-pointer select-none">
           <div>
-            <button onClick={onMenuClick}>
+            <button onClick={onMenuClick} aria-label="Open menu">
               <HiMenu />
             </button>
           </div>
@@ -49,9 +49,6 @@ export default function Header({ onMenuClick }) {
           <nav className="flex items-center gap-4">
             <NavLink to="/dashboard" className={linkClasses}>
               Dashboard
-            </NavLink>
-            <NavLink to="/" className={linkClasses} end>
-              Home
             </NavLink>
             <NavLink to="/beneficiary" className={linkClasses} end>
               Beneficiaries

@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { fetchAuthSession } from "aws-amplify/auth";
 
-
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
