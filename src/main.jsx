@@ -10,8 +10,8 @@ Amplify.configure({
   Auth: {
     Cognito: {
       region: "us-east-1",
-      userPoolId: "us-east-1_irseAZAbj",
-      userPoolClientId: "1lu6rkiraide3fqkes7ob49ppm",
+      userPoolId: "us-east-1_Vv4Sn5geB",
+      userPoolClientId: "rtja83rhr30eo3d5omg6jqqlc",
       mandatorySignIn: false,
       loginWith: {
         email: true,

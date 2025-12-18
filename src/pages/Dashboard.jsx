@@ -1,9 +1,10 @@
 import Header from "../components/Header";
 import Card from "../components/Card";
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import useMeta from "../hooks/Meta";
 export default function Dashboard() {
-  const [isOpen, setIsOpen] = useState(false);
+  useMeta({ title: "Dashboard | InHerix" });
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <Card />

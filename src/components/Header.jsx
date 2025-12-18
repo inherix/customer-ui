@@ -1,6 +1,7 @@
 import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { signOut } from "aws-amplify/auth";
+import Inherix_Logo from "../assets/Inherix_Logo.png";
 import { HiMenu } from "react-icons/hi";
 export default function Header({ onMenuClick }) {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export default function Header({ onMenuClick }) {
   const linkClasses = ({ isActive }) =>
     `px-4 py-2 rounded-md text-sm font-medium transition-all duration-150 ${
       isActive
-        ? "bg-indigo-600 text-white shadow-sm"
-        : "text-gray-700 hover:bg-gray-100 hover:text-indigo-600 dark:text-gray-200 dark:hover:bg-gray-800"
+        ? "bg-black text-white shadow-sm"
+        : "text-white hover:bg-secondary hover:text-white "
     }`;
 
   return (
@@ -37,10 +38,12 @@ export default function Header({ onMenuClick }) {
             className="flex items-center justify-start gap-2"
           >
             <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-bold text-lg shadow">
-              C
+              <a href="/dashboard">
+                <img src={Inherix_Logo} alt="Inherix Logo" />
+              </a>
             </div>
             <div className="text-base font-semibold text-gray-800 dark:text-gray-100">
-              Customer Portal
+              InHeriX
             </div>
           </div>
         </div>
@@ -58,7 +61,7 @@ export default function Header({ onMenuClick }) {
 
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline text-sm text-gray-700 dark:text-gray-200 font-medium">
-            <span className="text-xs">Hello,</span>
+            <span className="text-sm">Hello,</span>
             {name}
             <div>Account</div>
           </span>

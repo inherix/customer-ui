@@ -17,24 +17,20 @@ function App() {
     <Suspense fallback={<div>loading...</div>}>
       <Routes>
         <Route path="*" element={<Navigate to="/dashboard" />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <MainLayout>
-                <Dashboard />
-              </MainLayout>
-            </ProtectedRoute>
-          }
-        />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<MainLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/beneficiary/*" element={<BeneficiaryRoutes />} />
+          </Route>
+        </Route>
         <Route
           path="/signin"
           element={
             user ? (
-              <Navigate to="/beneficiary" />
+              <Navigate to="/dashboard" />
             ) : (
               <AuthLayout>
-                <Login onSuccess={() => navigate("/beneficiary")} />
+                <Login onSuccess={() => navigate("/dashboard")} />
               </AuthLayout>
             )
           }
@@ -54,17 +50,6 @@ function App() {
             <AuthLayout>
               <Reset />
             </AuthLayout>
-          }
-        />
-
-        <Route
-          path="/beneficiary/*"
-          element={
-            <ProtectedRoute>
-              <MainLayout>
-                <BeneficiaryRoutes />
-              </MainLayout>
-            </ProtectedRoute>
           }
         />
       </Routes>

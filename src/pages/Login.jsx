@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { signIn } from "aws-amplify/auth";
+import Inherix_Logo from "../assets/Inherix_Logo.png";
 import { useAuth } from "../auth/AuthContext";
 export default function Login({ onSuccess }) {
   const [email, setEmail] = useState("");
@@ -37,17 +38,20 @@ export default function Login({ onSuccess }) {
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-slate-100">
         <div className="flex items-center gap-3 mb-6">
           <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-bold text-xl shadow">
-            C
+            <a href="/dashboard">
+              <img src={Inherix_Logo} alt="Inherix Logo" />
+            </a>
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-slate-900">
-              Customer Portal
-            </h1>
-            <p className="text-sm text-slate-500">Sign in to your account</p>
+            <h1 className="text-xl font-semibold text-slate-900">InHeriX</h1>
+            <p className="text-sm italic text-slate-500">Build your family</p>
           </div>
         </div>
 
         <div className="space-y-4">
+          <h1 className="text-xl font-semibold text-slate-900 mb-1">
+            Sign in to your account
+          </h1>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
               Email Address
