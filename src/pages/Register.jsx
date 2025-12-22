@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signUp, confirmSignUp } from "aws-amplify/auth";
 import { NavLink } from "react-router-dom";
+import Inherix_Logo from "../assets/Inherix_Logo.png";
 
 export default function Register() {
   const [step, setStep] = useState("signup");
@@ -80,18 +81,21 @@ export default function Register() {
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-slate-100">
         <div className="flex items-center gap-3 mb-6">
           <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-bold text-xl shadow">
-            C
+            <a href="/dashboard">
+              <img src={Inherix_Logo} alt="Inherix Logo" />
+            </a>
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-slate-900">
-              Customer Portal
-            </h1>
-            <p className="text-sm text-slate-500">Create an account</p>
+            <h1 className="text-xl font-semibold text-slate-900">InHeriX</h1>
+            <p className="text-sm italic text-slate-500">Build your family</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
+            <h1 className="text-xl font-semibold text-slate-900 mb-2">
+              Create your account
+            </h1>
             <label className="block text-sm font-medium mb-1">First Name</label>
             <input
               type="text"
