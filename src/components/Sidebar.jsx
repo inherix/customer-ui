@@ -55,7 +55,6 @@ export default function Sidebar({ isOpen, onClose }) {
             <NavLink to="/beneficiary" className={linkClasses}>
               Beneficiaries
             </NavLink>
-
           </li>
           <li>
           <NavLink to="/beneficiary/last_will" className={linkClasses} end>
