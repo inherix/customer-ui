@@ -55,7 +55,13 @@ export default function Sidebar({ isOpen, onClose }) {
             <NavLink to="/beneficiary" className={linkClasses}>
               Beneficiaries
             </NavLink>
+
           </li>
+          <li>
+          <NavLink to="/beneficiary/last_will" className={linkClasses} end>
+              Will
+            </NavLink>
+            </li>
         </ul>
       </div>
       <div className="absolute bottom-4 left-4 sm:hidden ">
