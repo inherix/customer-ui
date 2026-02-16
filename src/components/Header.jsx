@@ -56,6 +56,9 @@ export default function Header({ onMenuClick }) {
             <NavLink to="/beneficiary" className={linkClasses} end>
               Beneficiaries
             </NavLink>
+             <NavLink to="/beneficiary/last_will" className={linkClasses} end>
+              Will
+            </NavLink>
           </nav>
         </div>
 

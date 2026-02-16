@@ -59,6 +59,7 @@ export default function Login({ onSuccess }) {
             <input
               type="text"
               autoComplete="username"
+              name="email"
               placeholder="Enter your email"
               value={email}
               className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -74,6 +75,7 @@ export default function Login({ onSuccess }) {
             <input
               type="password"
               autoComplete="current-password"
+              name="password"
               value={password}
               placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
@@ -83,7 +85,8 @@ export default function Login({ onSuccess }) {
           {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
 
           <button
-            type="button"
+            type="submit"
+            name="submit"
             onClick={login}
             className="w-full mt-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium shadow-md transition"
           >
