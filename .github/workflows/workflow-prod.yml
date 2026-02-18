@@ -68,7 +68,7 @@ jobs:
       - name: Apply Kubernetes manifests
         run: kubectl apply -f k8s/customer.yml
       - name: apply to EKS
-        run: kubectl set image deployment/customer-mf-app-deployment customer-mf-container=${{ vars.ECR_REPO }}:${{ needs.build.outputs.image }}
+        run: kubectl set image deployment/customer-mf-app-deployment customer-mf-container=${{ vars.ECR_REPO }}:customer-mf-${{ needs.build.outputs.image }}
       - name: Verify rollout
         run: |
           kubectl rollout status deployment/customer-mf-app-deployment
