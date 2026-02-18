@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-mf-app-deployment
+  labels:
+    app: customer-mf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-mf
+  template:
+    metadata:
+    labels:
+      app: customer-mf
+    spec:
+      containers:
+        name: customer-mf-container
+        image: 33155028257.dkr.ecr.us-east-1.amazonaws.com/dev/ope-api:1.0
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-mf-app-deployment
+  labels:
+    app: customer-mf
+spec:
+  selector:
+    app: customer-mf
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 80
+  type: LoadBalancer
+
