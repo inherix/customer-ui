@@ -45,11 +45,11 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-react-app .
-          docker tag my-react-app:latest ${{vars.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
+          docker tag my-react-app:latest ${{vars.ECR_REPO}}:customer-mf-${{steps.dockerId.outputs.image-version}}
 
       - name: Push Docker image
         run: |
-          docker push ${{vars.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
+          docker push ${{vars.ECR_REPO}}:customer-mf-${{steps.dockerId.outputs.image-version}}
 
   deploy:
     needs: build
@@ -65,7 +65,7 @@ jobs:
       - name: Configure EKS
         run: aws eks update-kubeconfig --region ${{vars.AWS_REGION}} --name inherix-dev
       - name: Apply Kubernetes manifests
-        run: kubectl apply -f k8/customer.yaml
+        run: kubectl apply -f ./k8/customer.yaml
       - name: apply to EKS
         run: kubectl set image deployment/customer-mf-app-deployment customer-mf-container=${{ vars.ECR_REPO }}:${{ needs.build.outputs.image }}
       - name: Verify rollout
