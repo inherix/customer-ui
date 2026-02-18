@@ -13,12 +13,19 @@ spec:
     metadata:
       labels:
         app: customer-mf
-    specs:
-      container:
+    spec:
+      containers:
         - name: customer-mf-container
           image: 33155028257.dkr.ecr.us-east-1.amazonaws.com/dev/ope-api:1.0
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
 
 ---
 
