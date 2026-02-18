@@ -1,4 +1,4 @@
-name: Docker Image
+name: Customer Docker Image
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{var.AWS_REGION}}
+          aws-region: ${{vars.AWS_REGION}}
 
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
@@ -45,11 +45,11 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-react-app .
-          docker tag my-react-app:latest ${{var.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
+          docker tag my-react-app:latest ${{vars.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
 
       - name: Push Docker image
         run: |
-          docker push ${{var.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
+          docker push ${{vars.ECR_REPO}}:${{steps.dockerId.outputs.image-version}}
 
   deploy:
     needs: build
@@ -61,7 +61,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{var.AWS_REGION}}
+          aws-region: ${{vars.AWS_REGION}}
       - name: Configure EKS
         run: aws eks update-kubeconfig --region ${{vars.AWS_REGION}} --name inherix-dev
       - name: Apply Kubernetes manifests
